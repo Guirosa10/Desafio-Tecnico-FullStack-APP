@@ -15,7 +15,8 @@ CREATE TABLE Users (
 CREATE TABLE todos (
     todo_id INT NOT NULL,
     user_id INT NOT NULL,
-    quantity INT NOT NULL,
+    todo INT NOT NULL,
+    status VARCHAR(30) NOT NULL,
     FOREIGN KEY (user_id)
         REFERENCES Users (id)
         ON DELETE CASCADE,

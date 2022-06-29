@@ -2,11 +2,11 @@ version: '3.9'
 
 services:
   backend:
-    build: /backend
+    build: ./backend
     container_name: app_backend
     platform: linux/amd64
     ports:
-      - 4000/4000
+      - 4000:4000
     volumes:
       - ./backend:/app/back
     environment:
@@ -20,16 +20,15 @@ services:
       test: ["CMD", "lsof", "-t", "-i:4000"]
       timeout: 10s
       retries: 5
-      start_period: 30s
     depends_on:
       mysqlDb:
         condition: service_healthy
   frontend:
-    build: /frontend
+    build: ./frontend
     container_name: app_frontend
     platform: linux/amd64
     ports:
-      - 3000/3000
+      - 3000:3000
     depends_on:
       backend:
         condition: service_healthy

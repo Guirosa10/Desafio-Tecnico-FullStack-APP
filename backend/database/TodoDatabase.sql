@@ -8,12 +8,11 @@ CREATE TABLE Users (
     id INT NOT NULL auto_increment,
     name VARCHAR(30) NOT NULL,
     email VARCHAR(30) NOT NULL,
-    quantity INT NOT NULL,
     PRIMARY KEY(id)
 ) ENGINE=INNODB;
 
 CREATE TABLE todos (
-    todo_id INT NOT NULL,
+    todo_id INT NOT NULL auto_increment,
     user_id INT NOT NULL,
     todo INT NOT NULL,
     status VARCHAR(30) NOT NULL,

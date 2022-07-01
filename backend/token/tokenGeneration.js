@@ -4,14 +4,14 @@ require('dotenv').config();
 const secretPassword = process.env.JWT_SECRET;
 
 const jwtConfig = {
-  expiresIn: '1h',
-  algorithm: 'HS256',
+	expiresIn: '1h',
+	algorithm: 'HS256',
 };
 
 const generateJWT = (payload) => {
-  const token = jwt.sign({ data: payload }, secretPassword, jwtConfig);
+	const token = jwt.sign({ data: payload }, secretPassword, jwtConfig);
 
-  return token;
+	return token;
 };
 
 module.exports = generateJWT;

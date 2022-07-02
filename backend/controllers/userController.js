@@ -17,7 +17,8 @@ const userRegistration = async (req, res, next) => {
 	const {email, password} = req.body;
 	try {
 		const results = await userService.userRegistration(email, password);
-		return results;
+		return res.status(201).json(results);
+	
 	} catch (error) {
 		next(error);
 	}

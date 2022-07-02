@@ -2,7 +2,12 @@
 const connection = require('./connection');
 
 const userRegistration = async (email , password) => {
-	await connection.execute('INSERT INTO TodoApp.Users (email, password) VALUES (?,?)', [email, password]);
+	const [results] = await connection.execute('INSERT INTO TodoApp.Users (email, password) VALUES (?,?)', [email, password]);
+	const returnedObj = {
+		id: results.insertId,
+		email,
+	};
+	return returnedObj;
 };
 
 const getUser = async (email) => {

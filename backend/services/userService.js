@@ -10,7 +10,7 @@ const getUser = async (email) => {
 
 const userRegistration = async (email, password) => {
 	const results = await userModel.userRegistration(email, password);
-
+	
 	return results;
 };
 

@@ -32,7 +32,8 @@ const userLogin = async (req, res, next) => {
 	const { email } = req.body;
 	try {
 		const token = generateToken({ email });
-		return res.status(200).json({ token });
+		const { id } = await userService.getUser(email);
+		return res.status(200).json({ token, id });
 	} catch (error) {
 		next(error);
 	}

@@ -12,7 +12,7 @@ const userRegistration = async (email , password) => {
 
 const getUser = async (email) => {
 	const [results] = await connection.execute('SELECT * FROM TodoApp.Users WHERE email=(?)', [email]);
-	console.log('model', results);
+	
 	return results[0];
 };
 

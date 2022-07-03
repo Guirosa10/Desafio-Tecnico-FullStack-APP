@@ -16,9 +16,12 @@ const getUser = async (req, res, next) => {
 const userRegistration = async (req, res, next) => {
 	const {email, password} = req.body;
 	try {
+		const checkUser = await userService.getUser(email);
+		if(checkUser) {
+			return res.status(400).send('Email already registered');
+		}
 		const results = await userService.userRegistration(email, password);
 		return res.status(201).json(results);
-	
 	} catch (error) {
 		next(error);
 	}

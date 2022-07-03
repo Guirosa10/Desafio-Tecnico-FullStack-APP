@@ -2,9 +2,8 @@
 const userModel = require('../models/userModel');
 
 const getUser = async (email) => {
-	console.log('cheguei no service');
+	
 	const results = await userModel.getUser(email);
-	console.log('service', results);
 	return results;
 };
 

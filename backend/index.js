@@ -11,6 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(router.userRouter);
+app.use(router.todosRouter);
 
 app.use((err, _req, res, _next) => {
 	if (err.status) return res.status(err.status).json({ message: err.message });

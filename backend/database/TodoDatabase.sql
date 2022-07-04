@@ -14,7 +14,7 @@ CREATE TABLE Users (
 CREATE TABLE todos (
     todo_id INT NOT NULL auto_increment,
     user_id INT NOT NULL,
-    todo INT NOT NULL,
+    todo VARCHAR(200) NOT NULL DEFAULT 'pendente',
     status VARCHAR(30) NOT NULL,
     FOREIGN KEY (user_id)
         REFERENCES Users (id)

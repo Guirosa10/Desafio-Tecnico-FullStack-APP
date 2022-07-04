@@ -6,6 +6,12 @@ const getTodos = async (id) => {
 	return results;
 };
 
+const postTodo = async (id, todo, status) => {
+	await connection.execute(`INSERT INTO todoapp.todos 
+    (user_id, todo, status) VALUES (?,?,?)`, [id, todo, status]);
+};
+
 module.exports = {
 	getTodos,
+	postTodo,
 };

@@ -1,7 +1,22 @@
 * {
-  font-size: 20px;
   margin: auto;
+  font-size: 25px;
   border-style: border-box;
   text-align: center;
   line-height: 30px;
+  padding: 2%;
+}
+
+h1 {
+  font-size: 50px;
+  padding-top: 0;
+  padding-bottom: 1px;
+}
+
+h2 {
+  font-size: 40px
+}
+
+h3 {
+  font-size: 30px;
 }

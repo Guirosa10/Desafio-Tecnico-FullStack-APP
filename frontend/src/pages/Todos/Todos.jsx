@@ -7,7 +7,7 @@ export default function Todos() {
   const { id } = useParams();
   const [todos, setTodos] = useState([]);
   const [todoText, setTodoText] = useState('');
-  const [statusText, setStatusText] = useState('');
+  const [statusText, setStatusText] = useState('Pendente');
 
   useEffect(() => {
     axios.get(`http://localhost:4000/user/${id}`)
@@ -35,12 +35,11 @@ export default function Todos() {
         value={todoText}
         onChange={(e) => setTodoText(e.target.value)}
       />
-      <input
-        type="text"
-        placeholder="Insert Status"
-        value={statusText}
-        onChange={(e) => setStatusText(e.target.value)}
-      />
+      <select name="select" onChange={(e) => setStatusText(e.target.value)}>
+        <option value="Pendente">Pendente</option>
+        <option value="Em andamento" selected>Em andamento</option>
+        <option value="Pronto">Pronto</option>
+      </select>
       <button
         type="button"
         onClick={handleSubmit}
@@ -54,6 +53,5 @@ export default function Todos() {
         )) : <h3>No task Found</h3>
       }
     </>
-
   );
 }

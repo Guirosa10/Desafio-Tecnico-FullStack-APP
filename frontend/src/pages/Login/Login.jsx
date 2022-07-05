@@ -1,12 +1,14 @@
-import React, { useState /* useHistory */ } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorState, setErrorState] = useState('');
-  const [/* id */, setId] = useState(0);
-  /* const history = useHistory(); */
+  const [id, setId] = useState(0);
+  const [auth, setAuth] = useState(false);
+  const navigate = useNavigate();
 
   const submitForm = (e) => {
     setErrorState('');
@@ -19,10 +21,16 @@ export default function Login() {
       .then((response) => {
         localStorage.setItem('token', JSON.stringify(response.data.token));
         setId(response.data.id);
+        setAuth(true);
       })
-
       .catch((error) => setErrorState(JSON.stringify(error.response.data)));
   };
+
+  useEffect(() => {
+    if (auth) {
+      navigate(`/todos/user/${id}`);
+    }
+  }, [auth]);
 
   return (
     <form onSubmit={submitForm} className="registration-form">

@@ -15,8 +15,13 @@ const deleteTodos = async (todoId) => {
 	await connection.execute('DELETE FROM todoapp.todos WHERE todo_id = ?', [todoId]);
 };
 
+const updateTodo = async (todo, status, todoId) => {
+	await connection.execute('UPDATE todoapp.todos SET todo = ?, status= ? WHERE todo_id = ?', [todo, status, todoId]);
+};
+
 module.exports = {
 	getTodos,
 	postTodo,
-	deleteTodos
+	deleteTodos,
+	updateTodo,
 };

@@ -33,8 +33,19 @@ const deleteTodo = async (req, res, next) => {
 	}
 };
 
+const updateTodo = async (req, res, next) => {
+	try {
+		const {todo, status, todoId} = req.body;
+		const results = await todosService.updateTodo(todo, status, todoId);
+		return res.status(200).json(results);
+	} catch (error) {
+		next(error);
+	}
+};
+
 module.exports = {
 	getTodos,
 	postTodo,
-	deleteTodo
+	deleteTodo,
+	updateTodo
 };

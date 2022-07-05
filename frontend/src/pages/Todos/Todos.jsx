@@ -29,7 +29,6 @@ export default function Todos() {
 
   return (
     <>
-      <h2>Tasks</h2>
       <input
         type="text"
         placeholder="Insert Todo"
@@ -48,6 +47,7 @@ export default function Todos() {
       >
         Enter Task
       </button>
+      <h2>Tasks</h2>
       {
         todos ? todos.map((todo) => (
           <Todo todolist={todo} />

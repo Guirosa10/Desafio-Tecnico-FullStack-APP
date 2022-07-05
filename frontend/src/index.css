@@ -3,14 +3,12 @@
   font-size: 25px;
   border-style: border-box;
   text-align: center;
-  line-height: 30px;
-  padding: 1%;
+  line-height: 110%;
+  padding: 15px;
 }
 
 h1 {
   font-size: 50px;
-  padding-top: 0;
-  padding-bottom: 1px;
 }
 
 h2 {

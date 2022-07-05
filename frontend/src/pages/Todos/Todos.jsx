@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import Todo from '../../components/todo/Todo';
 
 export default function Todos() {
   const { id } = useParams();
   const [todos, setTodos] = useState([]);
+  const [todoText, setTodoText] = useState('');
+  const [statusText, setStatusText] = useState('');
 
   useEffect(() => {
     // get from api
@@ -16,13 +19,24 @@ export default function Todos() {
   return (
     <>
       <h2>Tasks</h2>
+      <input
+        type="text"
+        placeholder="Insert Todo"
+        value={todoText}
+        onChange={(e) => setTodoText(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Insert Status"
+        value={statusText}
+        onChange={(e) => setStatusText(e.target.value)}
+      />
+      <button type="button">
+        Enter Task
+      </button>
       {
         todos ? todos.map((todo) => (
-          <>
-            <h4>{ todo.todo }</h4>
-            <p>{ todo.todo_id }</p>
-            <p>{ todo.status }</p>
-          </>
+          <Todo todolist={todo} />
         )) : <h3>No task Found</h3>
       }
     </>

@@ -15,7 +15,7 @@ const postTodo = async (req, res, next) => {
 	try {
 		const { id, todo } = req.body;
 		let status = req.body.status;
-		const statusResponse = typeof status === 'undefined' ? 'pendente' : status;
+		const statusResponse = typeof status === 'undefined' || status === '' ? 'pendente' : status;
 		const results = await todosService.postTodo(id, todo, statusResponse);
 		return res.status(200).json(results);
 	} catch (error) {

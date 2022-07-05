@@ -10,11 +10,22 @@ export default function Todos() {
   const [statusText, setStatusText] = useState('');
 
   useEffect(() => {
-    // get from api
     axios.get(`http://localhost:4000/user/${id}`)
       .then((response) => setTodos(response.data))
       .catch((error) => error);
   }, [id, todos]);
+
+  const handleSubmit = () => {
+    const body = {
+      id,
+      todo: todoText,
+      status: statusText,
+    };
+
+    axios.post(`http://localhost:4000/user/${id}`, body)
+      .then((response) => response)
+      .catch((error) => error);
+  };
 
   return (
     <>
@@ -31,7 +42,10 @@ export default function Todos() {
         value={statusText}
         onChange={(e) => setStatusText(e.target.value)}
       />
-      <button type="button">
+      <button
+        type="button"
+        onClick={handleSubmit}
+      >
         Enter Task
       </button>
       {

@@ -11,7 +11,12 @@ const postTodo = async (id, todo, status) => {
     (user_id, todo, status) VALUES (?,?,?)`, [id, todo, status]);
 };
 
+const deleteTodos = async (todoId) => {
+	await connection.execute('DELETE FROM todoapp.todos WHERE todo_id = ?', [todoId]);
+};
+
 module.exports = {
 	getTodos,
 	postTodo,
+	deleteTodos
 };

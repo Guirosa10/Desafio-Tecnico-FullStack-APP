@@ -23,7 +23,18 @@ const postTodo = async (req, res, next) => {
 	}
 };
 
+const deleteTodo = async (req, res, next) => {
+	const { id } = req.params;
+	try {
+		const results = await todosService.deleteTodo(id);
+		return res.status(200).json(results);
+	} catch (error) {
+		next(error);
+	}
+};
+
 module.exports = {
 	getTodos,
 	postTodo,
+	deleteTodo
 };

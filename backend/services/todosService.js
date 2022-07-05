@@ -11,7 +11,14 @@ const postTodo = async (id, todo, status) => {
 	return results;
 };
 
+const deleteTodo = async (todoId) => {
+	const results = await todosModel.deleteTodos(todoId);
+
+	return results;
+};
+
 module.exports = {
 	getTodos,
 	postTodo,
+	deleteTodo,
 };

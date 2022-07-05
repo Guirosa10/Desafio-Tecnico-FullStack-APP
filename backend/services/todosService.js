@@ -17,8 +17,15 @@ const deleteTodo = async (todoId) => {
 	return results;
 };
 
+const updateTodo = async (todo, status, todoId) => {
+	const results = await todosModel.updateTodo(todo, status, todoId);
+
+	return results;
+};
+
 module.exports = {
 	getTodos,
 	postTodo,
 	deleteTodo,
+	updateTodo,
 };

@@ -16,7 +16,7 @@ Tecnologias
 - Docker
 
 
-###Bibliotecas
+### Bibliotecas
 
 - BodyParser
 - Cors
@@ -27,16 +27,16 @@ Tecnologias
 - Eslint
 ----
 
-###Como Instalar
+### Como Instalar
 
-####Instalação com Docker
+#### Instalação com Docker
 1. Você deve possuir o Docker instalado em sua máquina.
 2. Configure as váriaveis de ambient no arquivo `.env`, referentes a sua máquina.
 3. A partir da pasta principal do repositório, execute o comando `$ docker-compose up --build`
 4. Após concluída a instalação, entre na pasta `./backend/database/todoDatabase.sql` e execute o banco de dados na porta criada pelo docker, para assim, criá-lo.
 5. Desfrute da aplicação, que já foi iniciada no seu Browser.
 
-####Instalação sem Docker
+#### Instalação sem Docker
 
 1. Você deve possuir o node versão 16 instalado em sua máquina e também MySQL.
 2. Navegue até a pasta `./backend/database/todoDatabase.sql` e execute o banco de dados em seu MySQL.

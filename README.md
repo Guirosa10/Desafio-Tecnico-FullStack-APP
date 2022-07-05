@@ -39,11 +39,12 @@ Tecnologias
 #### Instalação sem Docker
 
 1. Você deve possuir o node versão 16 instalado em sua máquina e também MySQL.
-2. Navegue até a pasta `./backend/database/todoDatabase.sql` e execute o banco de dados em seu MySQL.
-3. Navegue até a pasta `/backend`e execute o comando npm install no terminal.
-4. Após a instalação, rode o comando `npm run dev` e deixe o terminal rodando.
-5. Abra outro terminal e navegue até a pasta `./frontend`.
-6. Execute o comando `npm install`.
-7. Após a instalação, rode o comando `npm start`
-8. A aplicação ira abrir em seu browser e você já pode utilizá-la.
+2. Configure as váriaveis de ambiente, localizadas no arquivo `.env` com as informações da sua conexão com banco
+3. Navegue até a pasta `./backend/database/todoDatabase.sql` e execute o banco de dados em seu MySQL.
+4. Navegue até a pasta `/backend`e execute o comando npm install no terminal.
+5. Após a instalação, rode o comando `npm run dev` e deixe o terminal rodando.
+6. Abra outro terminal e navegue até a pasta `./frontend`.
+7. Execute o comando `npm install`.
+8. Após a instalação, rode o comando `npm start`
+9. A aplicação ira abrir em seu browser e você já pode utilizá-la.
 

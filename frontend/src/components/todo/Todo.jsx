@@ -21,6 +21,7 @@ export default function Todo({ todolist, setTodos, userId }) {
       status: statusText,
       todoId: todolist.todo_id,
     };
+
     await axios.put('http://localhost:4000/todo/', body);
     const results = await axios.get(`http://localhost:4000/user/${userId}`);
     setTodos(results.data);

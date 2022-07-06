@@ -6,7 +6,7 @@ import './Todo.css';
 export default function Todo({ todolist, setTodos, userId }) {
   const [toggleEdit, setToggleEdit] = useState(false);
   const [todoText, setTodoText] = useState('');
-  const [statusText, setStatusText] = useState('');
+  const [statusText, setStatusText] = useState('Pendente');
 
   const handleDelete = async () => {
     await axios.delete(`http://localhost:4000/todo/${todolist.todo_id}`);
@@ -48,11 +48,11 @@ export default function Todo({ todolist, setTodos, userId }) {
             <input
               type="text"
               placeholder="Insert Todo"
-              value={todoText}
+              value={!todoText ? todolist.todo : todoText}
               onChange={(e) => setTodoText(e.target.value)}
             />
             <select onChange={(e) => setStatusText(e.target.value)}>
-              <option value="" selected disabled hidden>Choose here</option>
+              <option value="" selected disabled>Choose here</option>
               <option value="Pendente">Pendente</option>
               <option value="Em andamento">Em andamento</option>
               <option value="Pronto">Pronto</option>

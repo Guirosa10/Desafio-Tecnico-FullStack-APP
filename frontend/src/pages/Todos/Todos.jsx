@@ -56,6 +56,7 @@ export default function Todos() {
     const results = await axios.get(`http://localhost:4000/user/${id}`);
     setTodos(results.data);
     setData(results.data);
+    setTodoText('');
   };
 
   return (

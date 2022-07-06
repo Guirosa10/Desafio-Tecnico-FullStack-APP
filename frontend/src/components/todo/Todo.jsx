@@ -28,20 +28,14 @@ export default function Todo({ todolist }) {
 
   return (
     <div className="todo">
-      <h4>{ todolist.todo }</h4>
-      <p>{ todolist.status }</p>
-      <button
-        type="button"
-        onClick={handleDelete}
-      >
-        Delete
-      </button>
-      <button
-        type="button"
-        onClick={toggleEdition}
-      >
-        Edit Task
-      </button>
+      {
+        !toggleEdit && (
+          <>
+            <h4>{ todolist.todo }</h4>
+            <p>{ todolist.status }</p>
+          </>
+        )
+      }
       {
         toggleEdit && (
           <>
@@ -66,6 +60,20 @@ export default function Todo({ todolist }) {
           </>
         )
       }
+
+      <button
+        type="button"
+        onClick={handleDelete}
+      >
+        Delete
+      </button>
+      <button
+        type="button"
+        onClick={toggleEdition}
+      >
+        Edit Task
+      </button>
+
     </div>
   );
 }

@@ -3,22 +3,27 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import './Todo.css';
 
-export default function Todo({ todolist }) {
+export default function Todo({ todolist, setTodos, userId }) {
   const [toggleEdit, setToggleEdit] = useState(false);
   const [todoText, setTodoText] = useState('');
   const [statusText, setStatusText] = useState('');
 
-  const handleDelete = () => {
-    axios.delete(`http://localhost:4000/todo/${todolist.todo_id}`);
+  const handleDelete = async () => {
+    await axios.delete(`http://localhost:4000/todo/${todolist.todo_id}`);
+    const results = await axios.get(`http://localhost:4000/user/${userId}`);
+    setTodos(results.data);
+    setToggleEdit(false);
   };
 
-  const handleEdit = () => {
+  const handleEdit = async () => {
     const body = {
       todo: todoText,
       status: statusText,
       todoId: todolist.todo_id,
     };
-    axios.put('http://localhost:4000/todo/', body);
+    await axios.put('http://localhost:4000/todo/', body);
+    const results = await axios.get(`http://localhost:4000/user/${userId}`);
+    setTodos(results.data);
     setToggleEdit(false);
   };
 
@@ -45,12 +50,12 @@ export default function Todo({ todolist }) {
               value={todoText}
               onChange={(e) => setTodoText(e.target.value)}
             />
-            <input
-              type="text"
-              placeholder="Insert Status"
-              value={statusText}
-              onChange={(e) => setStatusText(e.target.value)}
-            />
+            <select onChange={(e) => setStatusText(e.target.value)}>
+              <option value="" selected disabled hidden>Choose here</option>
+              <option value="Pendente">Pendente</option>
+              <option value="Em andamento">Em andamento</option>
+              <option value="Pronto">Pronto</option>
+            </select>
             <button
               type="button"
               onClick={handleEdit}
@@ -60,18 +65,22 @@ export default function Todo({ todolist }) {
           </>
         )
       }
+      {
+        !toggleEdit && (
+          <button
+            type="button"
+            onClick={toggleEdition}
+          >
+            Edit Task
+          </button>
+        )
+      }
 
       <button
         type="button"
         onClick={handleDelete}
       >
         Delete
-      </button>
-      <button
-        type="button"
-        onClick={toggleEdition}
-      >
-        Edit Task
       </button>
 
     </div>
@@ -84,4 +93,6 @@ Todo.propTypes = {
     todo_id: PropTypes.number,
     status: PropTypes.string,
   }).isRequired,
+  setTodos: PropTypes.func.isRequired,
+  userId: PropTypes.number.isRequired,
 };
